@@ -1,0 +1,9 @@
+<h1>Working With Data in Angular</h1>
+
+<button (click)="sortProducts()">Sort</button>
+
+<ul>
+  <li *ngFor="let item of products">
+    {{ item.name }} {{ item.description }} {{ item.price }}
+  </li>
+</ul>

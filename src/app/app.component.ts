@@ -81,7 +81,4 @@ export class AppComponent {
     }
   ]
 
-  sortProducts() {
-    this.products = this.products.sort((a, b) => (a.price < b.price) ? 1 : -1);
-  }
 }

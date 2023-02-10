@@ -1,9 +1,6 @@
 <h1>Working With Data in Angular</h1>
-
-<button (click)="sortProducts()">Sort</button>
-
-<ul>
-  <li *ngFor="let item of products">
-    {{ item.name }} {{ item.description }} {{ item.price }}
-  </li>
-</ul>
+<div *ngFor="let item of products">
+  <h3>{{ item.name }}</h3>
+  <p>{{ item.description }}</p>
+  <span>{{ item.price | currency }}</span>
+</div>

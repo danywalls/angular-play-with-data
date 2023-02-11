@@ -16,3 +16,9 @@
 div:hover {
   opacity: 0.8;
 }
+
+.category {
+  background-color: cadetblue;
+  padding: 1rem;
+  border-radius: 5px;
+}

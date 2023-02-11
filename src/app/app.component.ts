@@ -1,13 +1,20 @@
 import { Component } from '@angular/core';
 
+interface groupedCategory {
+  category: string;
+  products: any;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-play-with-data';
 
+
+  title = 'angular-play-with-data';
+  total = 0.00;
   products = [
     {
       "id": 1,
@@ -80,5 +87,45 @@ export class AppComponent {
       "price": 99.99
     }
   ]
+
+  categories: groupedCategory[] = [];
+
+
+  public sortProductsDesc(): void {
+    this.products = this.products.sort((a, b) => a.price - b.price);
+  }
+
+  public sortProductsAsc() {
+    this.products = this.products.sort((a, b) => b.price - a.price);
+  }
+
+  filterBy(nameInput: HTMLInputElement) {
+    if (nameInput.value) {
+      this.products = this.products.filter(p => p.name === nameInput.value)
+    }
+  }
+
+  showGroup() {
+    //first group the products by category
+    const grouped = this.products.reduce((acc: any, curr) => {
+      let key = curr.category;
+      if (!acc[key]) {
+        acc[key] = [];
+      }
+      acc[key].push(curr);
+      return acc;
+    }, {});
+
+    //get the categories and product related.
+    this.categories = Object.keys(grouped).map(key => ({
+      category: key,
+      products: grouped[key]
+    }));
+
+  }
+
+  showTotal() {
+    this.total = this.products.reduce((acc, curr) => acc + curr.price, 0);
+  }
 
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-interface groupedCategory {
+interface groupByCategory {
   category: string;
   products: any;
 }
@@ -88,7 +88,7 @@ export class AppComponent {
     }
   ]
 
-  categories: groupedCategory[] = [];
+  categories: groupByCategory[] = [];
 
 
   public sortProductsDesc(): void {
